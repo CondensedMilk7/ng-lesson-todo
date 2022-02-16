@@ -1,0 +1,21 @@
+.item-input {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  flex-grow: 1;
+  margin-right: 12px;
+  font-size: 1.5rem;
+}
+
+button {
+  padding: 8px;
+  border: 2px solid rgb(71, 71, 200);
+  background: rgb(110, 196, 211);
+  border-radius: 8px;
+}
+
+button:hover {
+  background: blueviolet;
+}

@@ -1,0 +1,26 @@
+.item {
+  background: rgb(124, 124, 214);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+button {
+  padding: 8px;
+  border: 2px solid rgb(71, 71, 200);
+  background: rgb(240, 110, 136);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: crimson;
+}
+
+.done {
+  text-decoration: line-through;
+}
