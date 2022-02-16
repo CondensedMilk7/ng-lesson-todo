@@ -1,5 +1,5 @@
 .item {
-  background: rgb(124, 124, 214);
+  background: #414868;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
@@ -7,14 +7,22 @@
   border-radius: 12px;
   margin: 12px 0;
   cursor: pointer;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 100ms ease-in-out;
+  color: #c0caf5;
+}
+
+.item:hover {
+  transform: translatex(-10px);
 }
 
 button {
   padding: 8px;
-  border: 2px solid rgb(71, 71, 200);
-  background: rgb(240, 110, 136);
+  border: 2px solid #bb9af7;
+  background: #f7768e;
   border-radius: 8px;
-  cursor: pointer;
+  color: #1a1b26;
+  font-weight: bold;
 }
 
 button:hover {

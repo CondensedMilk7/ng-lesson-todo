@@ -10,10 +10,11 @@ input {
 }
 
 button {
-  padding: 8px;
-  border: 2px solid rgb(71, 71, 200);
-  background: rgb(110, 196, 211);
+  padding: 8px 16px;
+  border: 2px solid #bb9af7;
+  background: #a9b1d6;
   border-radius: 8px;
+  font-weight: bold;
 }
 
 button:hover {

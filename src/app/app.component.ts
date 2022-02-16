@@ -13,8 +13,6 @@ export class AppComponent implements OnInit {
   constructor(private itemsService: ItemsService) {}
 
   ngOnInit() {
-    this.items = this.itemsService.items;
+    this.items = this.itemsService.getItems();
   }
-
-
 }
