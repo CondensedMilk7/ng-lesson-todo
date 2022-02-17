@@ -3,14 +3,3 @@
   max-width: 800px;
   margin: auto;
 }
-
-.red-cube {
-  width: 100px;
-  height: 100px;
-  background: red;
-}
-.blue-cube {
-  width: 100px;
-  height: 100px;
-  background: blue;
-}

@@ -1,12 +1,10 @@
 .item {
   background: #414868;
-  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
   margin: 12px 0;
-  cursor: pointer;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
   transition: transform 100ms ease-in-out;
   color: #c0caf5;
@@ -23,6 +21,7 @@ button {
   border-radius: 8px;
   color: #1a1b26;
   font-weight: bold;
+  margin: 1rem;
 }
 
 button:hover {
@@ -31,4 +30,10 @@ button:hover {
 
 .done {
   text-decoration: line-through;
+}
+
+.desc-div {
+  flex-grow: 1;
+  padding: 1rem;
+  cursor: pointer;
 }
