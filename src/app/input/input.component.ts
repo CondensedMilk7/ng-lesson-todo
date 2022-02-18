@@ -12,7 +12,10 @@ export class InputComponent implements OnInit {
   ngOnInit(): void {}
 
   onNewItem(inputElement: HTMLInputElement) {
-    this.itemsService.addItem(inputElement.value);
-    inputElement.value = '';
+    const newItemDesc = inputElement.value;
+    if (newItemDesc) {
+      this.itemsService.addItem(inputElement.value);
+      inputElement.value = '';
+    }
   }
 }
