@@ -14,7 +14,7 @@ export class InputComponent implements OnInit {
   onNewItem(inputElement: HTMLInputElement) {
     const newItemDesc = inputElement.value;
     if (newItemDesc) {
-      this.itemsService.addItem(inputElement.value);
+      this.itemsService.addItem(inputElement.value).subscribe();
       inputElement.value = '';
     }
   }

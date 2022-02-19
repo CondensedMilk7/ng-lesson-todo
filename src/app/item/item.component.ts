@@ -9,15 +9,16 @@ import { ItemsService } from '../items.service';
 })
 export class ItemComponent {
   @Input() item: Item;
-  @Input() itemIndex: number;
 
   constructor(private itemsService: ItemsService) {}
 
   onDeleteItem() {
-    this.itemsService.deleteItem(this.itemIndex);
+    this.itemsService.deleteItem(this.item.key).subscribe();
   }
 
   onItemDone() {
-    this.itemsService.finishItem(this.itemIndex);
+    this.itemsService
+      .updateItem({ ...this.item, done: !this.item.done })
+      .subscribe();
   }
 }

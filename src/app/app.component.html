@@ -1,8 +1,4 @@
 <div class="container">
   <app-input></app-input>
-  <app-item
-    *ngFor="let itemObj of items; let i = index"
-    [item]="itemObj"
-    [itemIndex]="i"
-  ></app-item>
+  <app-item *ngFor="let itemObj of items" [item]="itemObj"></app-item>
 </div>
