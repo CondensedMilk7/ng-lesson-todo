@@ -477,5 +477,6 @@ export class AppComponent implements OnInit, OnDestroy {
 დეტალური ინფორმაციისათვის გაეცანით დოკუმენტაციებს:
 
 - [Angular HTTP](https://angular.io/guide/http)
+- [Angular Observables](https://angular.io/guide/observables)
 - [RxJS](https://rxjs.dev/guide/overview)
 - [Firebase REST API](https://firebase.google.com/docs/reference/rest/database)
