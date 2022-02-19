@@ -13,10 +13,6 @@ export class ItemsService {
 
   constructor(private httpClient: HttpClient) {}
 
-  private saveItems() {
-    localStorage.setItem('todos', JSON.stringify(this.items));
-  }
-
   getItems(): Observable<Item[]> {
     return this.httpClient.get(`${this.baseUrl}todos.json`).pipe(
       map((response) => {
