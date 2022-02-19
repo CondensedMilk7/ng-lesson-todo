@@ -211,7 +211,7 @@ app/items.service.ts
 import { map, Observable } from 'rxjs';
 // ... other code
   getItems(): Observable<Item[]> {
-    return this.http.get(this.baseUrl + this.targetData).pipe(
+    return this.http.get(`${this.baseUrl}todos.json`).pipe(
       map((response) => {
         if (response) {
           const todoArray = [];
@@ -274,7 +274,7 @@ export class ItemsService {
       done: false,
     };
     this.http
-      .post<{ name: string }>(this.baseUrl + this.targetData, newItem)
+      .post<{ name: string }>(`${this.baseUrl}todos.json`, newItem)
       .pipe(
         tap((response: { name: string }) => {
           if (response) {
@@ -296,7 +296,7 @@ tap ოპერატორი საშუალებას გვაძლ�
 
 ```ts
   getItems(): Observable<Item[]> {
-    return this.http.get(this.baseUrl + this.targetData).pipe(
+    return this.http.get(`${this.baseUrl}todos.json`).pipe(
       map((response) => {
         if (response) {
           const todoArray = [];
