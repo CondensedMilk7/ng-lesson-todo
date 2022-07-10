@@ -13,7 +13,7 @@ export class ItemComponent {
   constructor(private itemsService: ItemsService) {}
 
   onDeleteItem() {
-    this.itemsService.deleteItem(this.item.key).subscribe();
+    this.itemsService.deleteItem(this.item.id).subscribe();
   }
 
   onItemDone() {

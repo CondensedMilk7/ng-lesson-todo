@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl:
-    'https://ng-lesson-todo-c1412-default-rtdb.europe-west1.firebasedatabase.app/',
+  baseUrl: 'http://localhost:3000/todo/',
 };
 
 /*
