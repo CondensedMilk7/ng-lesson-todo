@@ -7,26 +7,11 @@ import { Item } from './item.model';
 @Injectable({ providedIn: 'root' })
 export class ItemsService {
   baseUrl = environment.baseUrl;
-  items: Item[] = [];
-
-  itemsUpdated$ = new Subject<Item[]>();
 
   constructor(private httpClient: HttpClient) {}
 
-  getItems(): Observable<Item[]> {
-    return this.httpClient.get(`${this.baseUrl}todos.json`).pipe(
-      map((response) => {
-        if (response) {
-          const todoArray = [];
-          for (let key in response) {
-            todoArray.push({ ...response[key], key: key });
-          }
-          return todoArray;
-        } else {
-          return [];
-        }
-      })
-    );
+  getItems() {
+    return this.httpClient.get<Item[]>(this.baseUrl);
   }
 
   addItem(newItemDesc: string) {
@@ -34,31 +19,21 @@ export class ItemsService {
       description: newItemDesc,
       done: false,
     };
-    return this.httpClient.post(`${this.baseUrl}todos.json`, newItem).pipe(
-      map((response: { name: string }) => {
-        return { ...newItem, key: response.name };
-      })
-    );
+    return this.httpClient.post<Item>(this.baseUrl, newItem);
   }
 
-  deleteItem(key: string) {
-    return this.httpClient.delete(`${this.baseUrl}todos/${key}.json`).pipe(
+  deleteItem(id: number) {
+    return this.httpClient.delete(this.baseUrl + id).pipe(
       map(() => {
-        return key;
+        return id;
       })
     );
   }
 
   updateItem(item: Item) {
-    return this.httpClient
-      .patch(`${this.baseUrl}todos/${item.key}.json`, {
-        description: item.description,
-        done: item.done,
-      })
-      .pipe(
-        map(() => {
-          return item;
-        })
-      );
+    return this.httpClient.patch<Item>(this.baseUrl + item.id, {
+      description: item.description,
+      done: item.done,
+    });
   }
 }

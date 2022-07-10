@@ -33,7 +33,7 @@ export const updateItemFailed = createAction(
 
 export const deleteItemSuccessful = createAction(
   '[Todo Api] Delete Item Successful',
-  props<{ key: string }>()
+  props<{ id: number }>()
 );
 
 export const deleteItemFailed = createAction(

@@ -46,9 +46,9 @@ export class TodoEffects {
   deleteItem$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(TodoActions.deleteItem),
-      mergeMap(({ key }) =>
-        this.itemsService.deleteItem(key).pipe(
-          map((key) => TodoApiActions.deleteItemSuccessful({ key })),
+      mergeMap(({ id }) =>
+        this.itemsService.deleteItem(id).pipe(
+          map((id) => TodoApiActions.deleteItemSuccessful({ id })),
           catchError((err: HttpErrorResponse) =>
             of(
               TodoApiActions.getItemsFailed({

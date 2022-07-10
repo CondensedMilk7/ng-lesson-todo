@@ -39,9 +39,9 @@ export const todoReducer = createReducer(
 
   // Delete Item
   on(TodoActions.deleteItem, (state) => ({ ...state, loading: true })),
-  on(TodoApiActions.deleteItemSuccessful, (state, { key }) => ({
+  on(TodoApiActions.deleteItemSuccessful, (state, { id }) => ({
     ...state,
-    items: TodoUtils.removeItem(state.items, key),
+    items: TodoUtils.removeItem(state.items, id),
     loading: false,
   })),
   on(TodoApiActions.deleteItemFailed, (state, { error }) => ({
@@ -55,7 +55,7 @@ export const todoReducer = createReducer(
   on(TodoApiActions.updateItemSuccessful, (state, { item }) => ({
     ...state,
     items: state.items.map((i) => {
-      if (i.key === item.key) {
+      if (i.id === item.id) {
         return item;
       } else {
         return i;

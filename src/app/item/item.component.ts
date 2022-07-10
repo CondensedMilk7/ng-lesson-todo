@@ -8,11 +8,11 @@ import { Item } from '../item.model';
 })
 export class ItemComponent {
   @Input() item: Item;
-  @Output() delete = new EventEmitter<string>();
+  @Output() delete = new EventEmitter<number>();
   @Output() updateItem = new EventEmitter<Item>();
 
   onDeleteItem() {
-    this.delete.emit(this.item.key);
+    this.delete.emit(this.item.id);
   }
 
   onItemDone() {

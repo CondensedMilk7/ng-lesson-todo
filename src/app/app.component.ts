@@ -24,8 +24,8 @@ export class AppComponent implements OnInit {
     this.store.dispatch(TodoActions.addItem({ description }));
   }
 
-  onDelete(key: string) {
-    this.store.dispatch(TodoActions.deleteItem({ key }));
+  onDelete(id: number) {
+    this.store.dispatch(TodoActions.deleteItem({ id }));
   }
 
   onUpdateItem(item: Item) {

@@ -8,7 +8,7 @@ export const addItem = createAction(
 
 export const deleteItem = createAction(
   '[Todo Page] Delete Item',
-  props<{ key: string }>()
+  props<{ id: number }>()
 );
 
 export const updateItem = createAction(
