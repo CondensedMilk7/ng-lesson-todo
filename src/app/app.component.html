@@ -1,4 +1,19 @@
 <div class="container">
-  <app-input></app-input>
-  <app-item *ngFor="let itemObj of items" [item]="itemObj"></app-item>
+  <app-input (newItem)="onNewItem($event)"></app-input>
+  <ng-container *ngIf="error$ | async as error">
+    <h2 class="error">{{ error }}</h2>
+  </ng-container>
+  <ng-container *ngIf="items$ | async as items">
+    <app-item
+      *ngFor="let item of items"
+      [item]="item"
+      (delete)="onDelete($event)"
+      (updateItem)="onUpdateItem($event)"
+    ></app-item>
+  </ng-container>
+  <ng-container *ngIf="loading$ | async">
+    <div class="spinner-container">
+      <img src="../assets/tail-spin.svg" alt="loading spinner" />
+    </div>
+  </ng-container>
 </div>

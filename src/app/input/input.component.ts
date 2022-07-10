@@ -1,20 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemsService } from '../items.service';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.css'],
 })
-export class InputComponent implements OnInit {
-  constructor(private itemsService: ItemsService) {}
-
-  ngOnInit(): void {}
+export class InputComponent {
+  @Output() newItem = new EventEmitter();
 
   onNewItem(inputElement: HTMLInputElement) {
     const newItemDesc = inputElement.value;
     if (newItemDesc) {
-      this.itemsService.addItem(inputElement.value).subscribe();
+      this.newItem.emit(newItemDesc);
       inputElement.value = '';
     }
   }

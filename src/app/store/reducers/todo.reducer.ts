@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { TodoActions, TodoApiActions } from '../actions';
 import { TodoState } from '../state';
+import { TodoUtils } from '../util/todo.util';
 
 const initialState: TodoState = {
   items: [],
@@ -40,9 +41,7 @@ export const todoReducer = createReducer(
   on(TodoActions.deleteItem, (state) => ({ ...state, loading: true })),
   on(TodoApiActions.deleteItemSuccessful, (state, { key }) => ({
     ...state,
-    items: state.items.splice(
-      state.items.findIndex((item) => item.key === key)
-    ),
+    items: TodoUtils.removeItem(state.items, key),
     loading: false,
   })),
   on(TodoApiActions.deleteItemFailed, (state, { error }) => ({

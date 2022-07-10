@@ -1,31 +1,34 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Item } from './item.model';
-import { ItemsService } from './items.service';
+import { TodoActions } from './store/actions';
+import { TodoSelectors } from './store/selectors';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, OnDestroy {
-  items: Item[];
+export class AppComponent implements OnInit {
+  items$ = this.store.select(TodoSelectors.selectItems);
+  loading$ = this.store.select(TodoSelectors.selectLoading);
+  error$ = this.store.select(TodoSelectors.selectError);
 
-  itemsUpdated$ = new Subscription();
-
-  constructor(private itemsService: ItemsService) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
-    this.itemsService.getItems().subscribe((items) => {
-      this.items = items;
-    });
-
-    this.itemsUpdated$ = this.itemsService.itemsUpdated$.subscribe((items) => {
-      this.items = items;
-    });
+    this.store.dispatch(TodoActions.getItems());
   }
 
-  ngOnDestroy(): void {
-    this.itemsUpdated$.unsubscribe();
+  onNewItem(description: string) {
+    this.store.dispatch(TodoActions.addItem({ description }));
+  }
+
+  onDelete(key: string) {
+    this.store.dispatch(TodoActions.deleteItem({ key }));
+  }
+
+  onUpdateItem(item: Item) {
+    this.store.dispatch(TodoActions.updateItem({ item }));
   }
 }

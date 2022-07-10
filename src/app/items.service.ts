@@ -25,9 +25,6 @@ export class ItemsService {
         } else {
           return [];
         }
-      }),
-      tap((items) => {
-        this.items = items;
       })
     );
   }
@@ -38,21 +35,16 @@ export class ItemsService {
       done: false,
     };
     return this.httpClient.post(`${this.baseUrl}todos.json`, newItem).pipe(
-      tap((response: { name: string }) => {
-        if (response) {
-          this.items.push({ ...newItem, key: response.name });
-          this.itemsUpdated$.next(this.items);
-        }
+      map((response: { name: string }) => {
+        return { ...newItem, key: response.name };
       })
     );
   }
 
   deleteItem(key: string) {
     return this.httpClient.delete(`${this.baseUrl}todos/${key}.json`).pipe(
-      tap(() => {
-        const itemIndex = this.items.map((item) => item.key).indexOf(key);
-        this.items.splice(itemIndex, 1);
-        this.itemsUpdated$.next(this.items);
+      map(() => {
+        return key;
       })
     );
   }
@@ -64,12 +56,8 @@ export class ItemsService {
         done: item.done,
       })
       .pipe(
-        tap(() => {
-          const itemIndex = this.items
-            .map((item) => item.key)
-            .indexOf(item.key);
-          this.items[itemIndex] = item;
-          this.itemsUpdated$.next(this.items);
+        map(() => {
+          return item;
         })
       );
   }

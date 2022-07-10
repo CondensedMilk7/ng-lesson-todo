@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Item } from '../item.model';
-import { ItemsService } from '../items.service';
 
 @Component({
   selector: 'app-item',
@@ -9,16 +8,14 @@ import { ItemsService } from '../items.service';
 })
 export class ItemComponent {
   @Input() item: Item;
-
-  constructor(private itemsService: ItemsService) {}
+  @Output() delete = new EventEmitter<string>();
+  @Output() updateItem = new EventEmitter<Item>();
 
   onDeleteItem() {
-    this.itemsService.deleteItem(this.item.key).subscribe();
+    this.delete.emit(this.item.key);
   }
 
   onItemDone() {
-    this.itemsService
-      .updateItem({ ...this.item, done: !this.item.done })
-      .subscribe();
+    this.updateItem.emit({ ...this.item, done: !this.item.done });
   }
 }

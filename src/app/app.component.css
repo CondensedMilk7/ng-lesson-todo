@@ -3,3 +3,18 @@
   max-width: 800px;
   margin: auto;
 }
+
+.spinner-container {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.spinner-container img {
+  height: 4rem;
+}
+
+.error {
+  color: crimson;
+  text-align: center;
+  padding: 4rem;
+}
