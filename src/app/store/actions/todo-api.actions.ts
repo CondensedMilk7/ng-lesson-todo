@@ -30,7 +30,6 @@ export const updateItemFailed = createAction(
   '[Todo Api] Update Item Failed',
   props<{ error: string }>()
 );
-
 export const deleteItemSuccessful = createAction(
   '[Todo Api] Delete Item Successful',
   props<{ id: number }>()
