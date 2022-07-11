@@ -6,7 +6,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./input.component.css'],
 })
 export class InputComponent {
-  @Output() newItem = new EventEmitter();
+  @Output() newItem = new EventEmitter<string>();
 
   onNewItem(inputElement: HTMLInputElement) {
     const newItemDesc = inputElement.value;

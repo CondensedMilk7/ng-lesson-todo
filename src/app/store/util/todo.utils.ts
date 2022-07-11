@@ -1,4 +1,5 @@
 import { Item } from 'src/app/item.model';
+
 export class TodoUtils {
   public static removeItem(items: Item[], id: number) {
     const result = [...items];
