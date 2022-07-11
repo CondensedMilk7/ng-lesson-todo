@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { TodoActions, TodoApiActions } from '../actions';
 import { TodoState } from '../state';
-import { TodoUtils } from '../util/todo.util';
+import { TodoUtils } from '../util/todo.utils';
 
 const initialState: TodoState = {
   items: [],

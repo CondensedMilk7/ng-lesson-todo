@@ -1,19 +1,19 @@
 {
   "todo": [
     {
-      "description": "Walk the dog",
-      "done": false,
-      "id": 1
-    },
-    {
       "description": "Learn basics of Angular",
       "done": true,
       "id": 2
     },
     {
       "description": "Learn NgRx",
-      "done": false,
+      "done": true,
       "id": 3
+    },
+    {
+      "description": "Sleep",
+      "done": false,
+      "id": 4
     }
   ]
 }
