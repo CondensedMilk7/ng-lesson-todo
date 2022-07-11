@@ -35,6 +35,7 @@ export const todoReducer = createReducer(
   on(TodoApiActions.addItemFailed, (state, { error }) => ({
     ...state,
     error: error,
+    loading: false,
   })),
 
   // Delete Item
